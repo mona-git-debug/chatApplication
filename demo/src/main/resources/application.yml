@@ -1,31 +1,22 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:chatdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/chatdb
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     properties:
-   
       hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.H2Dialect
-
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        web-allow-others: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 server:
   port: 8080
 
 app:
   jwt:
-    secret: ReplaceThisSecretKeyNow
-    expiration-ms: 86400000   # 1 day
+    secret: MySuperSecretKey123456789   # <-- MUST NOT BE EMPTY
+    expiration-ms: 86400000             # 1 day
